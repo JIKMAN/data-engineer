@@ -1,47 +1,13 @@
+## Roadmap for Studying Data Engineer  
+#
 
-![Modern Data Engineer Roadmap 2021](img/title.png)
+데이터 엔지니어 학습을 위한 로드맵을
+다양한 소스들을 참고해 나름대로 정리해 보았다.  
 
-> Roadmap to becoming a data engineer in 2021
+> 데이터 엔지니어와 데이터 사이언티스트
 
-[![Twitter](https://img.shields.io/badge/-Twitter-1DA1F2)](https://twitter.com/datastacktv)
-[![YouTube](https://img.shields.io/badge/-YouTube-FF0000)](http://youtube.com/c/datastacktv)
-[![Website](https://img.shields.io/badge/-Website-565CD8)](https://datastack.tv/)
-[![Jobs](https://img.shields.io/badge/-Jobs-ffdf4b)](https://datastackjobs.com/)
+데이터 엔지니어는 데이터 분석가와 데이터 사이언티스트와 협업을 한다.  
+겹치는 업무도 존재하지만 회사의 성격과 해당 조직의 상황에 따라 달라질 수 있을 것이다.  
+프로그래밍에 관심이 있다면 데이터 엔지니어, 데이터 분석에 관심이 있다면 데이터 사이언티스트가 더 적합하다고 할 수 있다.
 
-This roadmap aims to give a **complete picture of the modern data engineering landscape** and serve as a **study guide** for aspiring data engineers.
-
-***
-
-<h3 align="center"><strong>Note to beginners</strong></h3>
-
-> Beginners shouldn’t feel overwhelmed by the vast number of tools and frameworks listed here. A typical data engineer would master a subset of these tools throughout several years depending on his/her company and career choices.
-
-***
-
-🔥  We just launched [**Data Stack Jobs**](https://datastackjobs.com/) — a clean and simple job site for Data Stack Engineers!
-
-> [Text version for visually impaired users](text/roadmap.md)
-
-![Data Engineer Roadmap](img/roadmap.png)
-
-## Nice to have 😎
-
-> [Text version for visually impaired users](text/extras.md)
-
-![Data Engineer Roadmap Extras](img/extras.png)
-
-## Contributions are welcome 💜
-
-Please raise an issue to discuss your suggestions or open a Pull Request to request improvements.
-
-## Reviewers 🔎
-
-Huge thank you to [@whydidithavetobebugs](https://github.com/whydidithavetobebugs), [@sawidis](https://github.com/sawidis), [@marclamberti](https://github.com/marclamberti) and [@mpyeager](https://github.com/mpyeager) for reviewing this roadmap.
-
-## About us 👋🏼
-
-[datastack.tv](https://datastack.tv/) is the learning platform for the modern data stack. We create concise screencast video tutorials for data engineers. [**Browse our courses here!**](https://datastack.tv/courses.html)
-
-## License 🗞
-
-> Copyright © 2021 Alexandra Abbas — <hello@datastack.tv>
+![engineer vs scientist](https://tech.kakao.com/wp-content/uploads/2021/03/01-3.png)
