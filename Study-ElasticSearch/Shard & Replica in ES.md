@@ -30,7 +30,7 @@
 
 **shard**는 쉽게 말하면 RAID0과 같다. elasticsearch는 indexing을 할 때 node 내부에 논리적으로 데이터 저장 공간을 만든다. 그리고 그 논리적 공간들에 데이터를 쭉 쓴다. 저장 공간이 1개라면 한번에 1개 데이터만 쓸 수 있겠지만 저장 공간을 논리적으로 나누게 되면 동시에 여러개 데이터를 분산해서 저장할 수 있게 된다. 
 
-elasticsearch에서는 shard 기본 세팅값이 5이다. 즉, 하나의 index(RDB에서 database와 유사한 개념)를 생성하고 데이터를 indexing하게 되면 node 내부에 논리적으로 5개의 shard가 생성되게 된다. 물론 또 다른 index를 생성하게 되면 그에 대한 shard는 새로 생성된다.
+인덱스를 생성할 때 별도의 설정을 하지 않으면 **7.0** 버전부터는 **디폴트로 1**개의 샤드로 인덱스가 구성되며 **6.x** 이하 버전에서는 **5개**로 구성됩니다. 클러스터에 노드를 추가하게 되면 샤드들이 각 노드들로 분산되고 디폴트로 1개의 복제본을 생성합니다. 5개의 경우 하나의 index(RDB에서 database와 유사한 개념)를 생성하고 데이터를 indexing하게 되면 node 내부에 논리적으로 5개의 shard가 생성되게 된다. 물론 또 다른 index를 생성하게 되면 그에 대한 shard는 새로 생성된다.
 
 만약 data node가 2개일 경우 아래와 같이 2개의 node에 3개, 2개의 shard가 생성되게 된다.
 
@@ -50,15 +50,15 @@ elasticsearch에서는 shard 기본 세팅값이 5이다. 즉, 하나의 index(R
 
  elasticsearch의 replica 기본 세팅값은 1이다. 즉, 하나의 index를 생성하고 데이터를 indexing을 하게 되면 1개의 replica가 추가로 생성된다는 의미이다. 2개의 data node를 사용하고 shard, replica를 기본 설정으로 사용하게 되면 아래와 같이 shard와 replica가 구성된다. 붉은색 박스가 primary shard(원본 데이터)이고 녹색 박스가 replica shard(복제본)이다. replic의 기본 기능이 복제본을 통해 원본 shard의 장애를 대응하는 것이라 했다. 한 node 안에 동일 shard에 대한 primary와 replica가 함께 존재하는 경우에 해당 node가 장애가 나게 되면 primary, replica shard 모두 죽으므로 정상적으로 데이터를 제공할 수 없게 된다. 따라서 동일 shard에 대한 primary, replica는 동일 node안에 존재할 수 없다. 그래서 아래처럼 node1이 갖고 있는 shard에 대한 replica는 node2에 생성되고 node2가 갖고 있는 shard에 대한 replica는 node1에 생성되는 것이다.
 
- 
-
-shard와 replica는 생성하는 index(database)별로 생성이 된다. 위와 같이 shard 5개, replica 1개로 설정할 경우 index당 10개의 shard가 생성된다.
-
- 
 
 
+```
+노드가 1개만 있는 경우 프라이머리 샤드만 존재하고 복제본은 생성되지 않습니다. Elasticsearch 는 아무리 작은 클러스터라도 데이터 가용성과 무결성을 위해 최소 3개의 노드로 구성 할 것을 권장하고 있습니다.
+```
 
-![img](https://blog.kakaocdn.net/dn/bewHPL/btqA4AeSRGF/eKxM1wOYrTkaQdRediWMkk/img.png)
+
+
+![img](https://gblobscdn.gitbook.com/assets%2F-Ln04DaYZaDjdiR_ZsKo%2F-LnUxLhQtL_hJwYydM_5%2F-LnKhmx31SnLDNMKr_YT%2Fimage.png?alt=media&token=fc99a84d-5f9f-4d3d-aad6-21e503567b33)
 
 
 
