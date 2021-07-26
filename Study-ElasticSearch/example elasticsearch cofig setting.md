@@ -278,3 +278,30 @@ $ curl http://192.168.100.11:9200/_cluster/health?pretty
 
 ```
 
+
+
+#### 샤드 개수 설정
+
+샤드의 개수는 인덱스를 처음 생성할 때 지정할 수 있다. 프라이머리 샤드 수는 인덱스를 처음 생성할 때 지정하며, **인덱스를 재색인 하지 않는 이상 바꿀 수 없다**. 복제본의 개수는 나중에 변경이 가능하다.
+
+```bash
+#프라이머리 샤드 5, 복제본 1 인 books 인덱스 생성
+
+$ curl -XPUT "http://localhost:9200/books" -H 'Content-Type: application/json' -d'
+{
+  "settings": {
+    "number_of_shards": 5,
+    "number_of_replicas": 1
+  }
+}'
+```
+
+```bash
+# books 인덱스의 복제본 개수를 0 으로 변경
+
+$ curl -XPUT "http://localhost:9200/books/_settings" -H 'Content-Type: application/json' -d'
+{
+  "number_of_replicas": 0
+}'
+```
+
