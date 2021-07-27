@@ -13,10 +13,10 @@ credentials = service_account.Credentials.from_service_account_file(
 client = pubsub_v1.PublisherClient(credentials=credentials)
 topic_path = client.topic_path('jungik-ta', 'tweets')
 
-twitter_api_key = ''
-twitter_api_secret_key = ''
-twitter_access_token = ''
-twitter_access_token_secret = ''
+twitter_api_key = 'NE2luEylBY8jiKmnEOmQq7G0E'
+twitter_api_secret_key = 'qMFPgOfTpCOUhWtkW0807ZUym3K5b1a817P8MUb54JrOEM5Ci7'
+twitter_access_token = '1419577272164442116-i7DdNuI39MFP4CBVhnvk7oUDI9TTtR'
+twitter_access_token_secret = 'xLKYn8BZbeXZmm2JEvDpCB9qzJdJS4wiiTHYif2MhMhkx'
 
 class MyStreamListener(tweepy.StreamListener):
     def on_status(self, status):
