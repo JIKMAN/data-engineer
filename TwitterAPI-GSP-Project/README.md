@@ -225,7 +225,7 @@ CMD ["python", "tweet.py"]
 3. Google Container Registry 연동
 4. 이미지 배포
 
-* push gcr.io/jungik-ta/tweetsla
+* `push gcr.io/jungik-ta/tweetsla`
 
 ![image-20210727132358908](../img/container.png)
 
