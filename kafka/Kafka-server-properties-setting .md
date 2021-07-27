@@ -75,6 +75,7 @@ zookeeper.connect=localhost:2181
 zookeeper.connection.timeout.ms=6000
 ```
 
+* 참고 : https://free-strings.blogspot.com/2016/04/blog-post.html
 * 공식 문서 : https://kafka.apache.org/documentation/#configuration
 
 
