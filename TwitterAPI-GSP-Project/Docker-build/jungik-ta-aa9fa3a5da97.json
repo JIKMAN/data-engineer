@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "jungik-ta",
+  "private_key_id": "aa9fa3a5da97d4fdc1e81238b8d56b12cc6db718",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQClXaqib+y0vG/a\nRtEZTrSI5YbKBNShrVM7pYesve6+elb5wUHJ9p/MyhsXTKhUTCicolKwqThPO773\nV/RLNtby2ZB0dPUu4qg8O6VQV2MRPEPRpWl0TtOTSCNbAihFnIzXcXUVvrRqTK9o\nyfMjy//2KmqkqKV3jmEiqw3W5VSlVy1Jekl5aR9iD21N42cwByC4Lixo+SKtYAas\ngutrEZtmLPyK9c+zPmyHxf5OUCTz6x5RFdAgSQZh2/cfr7gGZNk5gEsETwbQ5/2P\nBFfAYsh0X2wZvSHiNvvfk6x0VSHZicUmtQhyzt38YxvK2DgFwxU9ILNkejgIH9zb\nPGz6Spa5AgMBAAECggEAAVd3X8ggInd70CwOXJV7Dn9IdfUHhUgRHE+4481KeTN9\ndX68hL4+yHGEcxXHFIQCVeYcXRWRgOODChOz/xgBFpBSGo0dfFy6+CU/hNZoqzD2\nl61Z1aBaUlHdyq31aZOeMgbYIPT7Fr+zFb5mKI54jFaUw0EhB+LKyUucGhRpeK22\nUcxlkjO8fkDCy1LWe8CGU9kAqzGm4Xy8LMKUMJU9piHKK6mcsbIQSDyiBDSboPBu\n7jmtngmSdg1+GPIv2UeWkuArPhLGZHy5bWLjvkwT41ei3gn1kw1fOcIdXlAAtJbH\nR8QF0q2tkSOfScA+5eRneU1OncOemabx+NAnAk55vwKBgQDfDqfMSbNfRerpHSCa\n2SVZCfwprtplJFazCYvVXtyUkOXAJBqArSch4eOLnxuo58FW5S3wrGycluLvz7Wz\nSDKZhLccGmHVWPIevR7PeLjVNTaMas/ZuLoCu7cAoH4m0dS7a55fxeGQzwjmZKbi\nyzlFSUulJkYzogd0mzKIzlvrTwKBgQC9ydEpNIl4N8i/9QYUrLzG1R1M20sGYcTU\nIj3AFWo5BOQ7TSZngpVWHJqdt/jIqASAkkNDtI1ZM+zkpoc8qUiL7VjQUzkQw5Kf\n/YeWGUNPq8T6X4srzeCN0e5e20i6mtN1lQPCXPpzOEgAeTh7puFr2CyBdqkaR/uK\nXNAD4xs7dwKBgCshKlDV71j8q+9nMma+lfohdCCbLp9f52O29NLNBNm1Krd8Q6Od\n13M1uknE+hQuu7ORnNBshpPAmSDFiNyhmScWAlHsx/34tNg8uThkn1iacXG1NXtj\nvJPKuBfm8H2RFREoPfdGy9a0MYRa8enoYaqEAZxtSiWxrr9dQugw/pUBAoGBAKDm\n20c93VZopO/pQdCBakKAJ6kjOgYdGYxnw0Z4YWgZ9403KVoUYZtyALu6X1du6vI+\nDnz2M+ful+Z6MKmDM5g+D0//XqARztuJTEw6+tAu5n8GRa1LjBdwZdFRw+VAogpL\n3bYIseTBUHnmS7a5kt+llIXmHhPD90Qkz86b2lidAoGAY/hyJWaw9dndqJM6fiLy\nT/wMgvsMWVjL3V0ijkmOMdv3kXQOHqJv9O5jEVtr4cUK57O788q9uh5PsFThxh2Z\nUZOs0w4XY1MUz9fJS0VFbKlZVpxHe4S9ulszo4JUHtHIGV9ad3X7/5vkLN6NDJ1A\nLUjYTHws1kLKweUny7Ey4/U=\n-----END PRIVATE KEY-----\n",
+  "client_email": "tweet-clinet@jungik-ta.iam.gserviceaccount.com",
+  "client_id": "117609133992597232049",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/tweet-clinet%40jungik-ta.iam.gserviceaccount.com"
+}
