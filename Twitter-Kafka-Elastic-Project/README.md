@@ -1,13 +1,8 @@
-EC2 생성시 꼭 Seoul 선택
-
-* 회사에서 사용시 보안 때문에 네트웤을 분리하고 서브넷을 나누는 작업을 하게될 텐데..
-* IAM role?
+# Project for building Data Pipeline
 
 
 
-
-
-
+![pipeline_logo](../img/logo.png)
 
 ---
 
@@ -117,5 +112,81 @@ EC2 생성시 꼭 Seoul 선택
 >
 > 데이터 buffering을 위한 kafka 구성
 
+* VM server2 접속
 
+  * java설치 및 kafka 설치
+
+  ```bash
+  $ wget https://mirror.navercorp.com/apache/kafka/2.8.0/kafka_2.12-2.8.0.tgz
+  $ tar -xzf kafka_2.13-2.8.0.tgz
+  ```
+
+  * zookeeper 시작
+  * `&` : background 실행 명령어
+
+  ```bash
+  $ ./bin/zookeeper-server-start.sh config/zookeeper.properties &
+  ```
+
+  * 실행 확인
+
+  ```
+  $ ps -ef|grep java
+  ```
+
+    	- [UNIX] ps 명령어 : 
+
+  * start kafka broker 
+
+  ```bash
+  $ ./bin/kafka-server-start.sh config/server.properties &
+  ```
+
+  * 힙 메모리 설정
+
+  ```bash
+  $ vim ./bin/kafka-server-start.sh
+  export KAFKA_HEAP_OPTS="-Xmx256m -Xms256m"
+  ```
+
+  * zookeeper, kafka port 확인
+
+  ```bash
+  $ sudo netstat -anp | egrep "9092|2181"
+  ```
+
+  
+
+* zookeeper : partition offset의 코드관리 및 kafka cluster의 health check를 담당
+
+  * `zookeeper.properties`
+
+  ```sh
+  # snapshot 데이터를 저장할 경로를 지정
+  dataDir=C:/dev/kafka_2.13-2.6.0/data/zookeeper
+  # 클라이언트가 connect할 port 번호 지정
+  clientPort=2181
+  # 하나의 클라이언트에서 동시 접속하는 개수 제한, 기본값은 60이며, 0은 무제한
+  maxClientCnxns=0
+  # port 충돌을 방지하려면 admin server 비활성화(false)
+  admin.enableServer=false
+  # admin.serverPort=8080
+  
+  # 멀티 서버 설정을 위한 추가 코드
+  # server.id=host:port:port
+  server.1=localhost:2888:3888
+  # server.2=server_host_1:2888:3888
+  # server.3=server_host_2:2888:3888
+   
+  # 멀티 서버 설정시 각 서버의 dataDir 밑에 myid 파일이 있어야함.
+  # echo 1 > myid
+   
+  # 리더 서버에 연결해서 동기화하는 시간, [멀티서버옵션]
+  #initLimit=5
+   
+  # 리더 서버를 제외한 노드 서버가 리더와 동기화하는 시간, [멀티서버옵션]
+  #syncLimit=2
+  ```
+
+  * kafka document : https://kafka.apache.org/documentation/#quickstart
 
