@@ -271,6 +271,9 @@ $ vim config/jvm.options
 $ sudo sysctl -w vm.max_map_count=262144 # default : 65530
 $ sudo sysctl -p
 $ sudo sysctl vm.max_map_count
+
+# /config/elasticsearch.yml
+Discovery.type: single-node
 ```
 
 * configuration
@@ -292,7 +295,42 @@ $ ./bin/elasticsearch &
 * 작동 check
 
 ```bash
-$ curl -XGET localhost:9200
-$ curl -XGET localhost:9200/_cluster/health?pretty
+$ curl localhost:9200
+$ curl localhost:9200/_cluster/health?pretty
 ```
 
+* setting API in single-node
+
+```bash
+curl -XPUT 'localhost:9200/_settings?pretty' -H 'Content-Type: application/json' -d'
+{
+"index" : {
+"number_of_replicas" : 0
+  }
+}
+'
+```
+
+* #### kafka consumer 설정
+
+  * 새로운 VM logstash 설치 및 설정
+
+```bash
+input {
+  kafka {
+    bootstrap_servers => "{server ip}:9092"
+    codec => json_lines
+    consumer_threads => 1
+    group_id => "twitter_log_to_es"
+	topics => "twitter"
+  }
+}
+output {
+  elasticsearch {
+    codec => json
+    hosts => "{server ip}:9200"
+    index => "twitter-%{+YYYYMMdd}"
+    workers => 1
+  }
+}
+```
