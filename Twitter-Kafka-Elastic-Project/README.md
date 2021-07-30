@@ -134,7 +134,7 @@
   $ ps -ef|grep java
   ```
 
-    	- [UNIX] ps 명령어 : 
+  [UNIX] ps 명령어 : https://github.com/JIKMAN/IT-study/blob/master/%5BUNIX%5D%20PS%20%EB%AA%85%EB%A0%B9%EC%96%B4.md
 
   * start kafka broker 
 
@@ -189,4 +189,110 @@
   ```
 
   * kafka document : https://kafka.apache.org/documentation/#quickstart
+
+* 카프카 topic 생성
+
+```bash
+$ ./bin/kafka-topics.sh --create --topic twitter --bootstrap-server \ localhost:9092 --replication-factor 1 --partitions 1
+```
+
+* 토픽 생성 확인
+
+```bash
+$ ./bin/kafka-topics.sh --list --bootstrap-server localhost:9092
+
+$ ./bin/kafka-topics.sh --describe --bootstrap-server localhost:9092
+```
+
+
+
+* 토픽의 retention bytes 변경
+
+```bash
+$ ./bin/kafka-topics.sh --bootstrap-server localhost:9092 --entity-type topics --entity-name twitter --alter --add-config retention.bytes=100000000
+```
+
+
+
+> Cousumer, Producer test
+
+```bash
+# Test Producer
+$ ./bin/kafka-console-producer.sh --broker-list localhost:9092 -topic twitter
+# Test Consumer
+$ ./bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 -topic twitter
+```
+
+![test](../img/topic_test.png)
+
+
+
+* logstash output 수정
+
+```bash
+output {
+  kafka {
+    topic_id => "twitter"
+    bootstrap_servers => "server_IP:9092"
+    acks => "1"
+    codec => json_lines
+  }
+}
+
+# servers에 s를 빼먹어서 몇시간을 고생했네요... 와아...
+```
+
+
+
+> ### 데이터 저장, 처리
+
+* VM server ElasticSearch 01~03
+
+* ElasticSearch install
+
+```bash
+# version 7.x
+# ES 패키지 안에 java를 포함하고 있다.
+
+wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.13.4-linux-x86_64.tar.gz
+```
+
+* JVM heap size 설정
+
+```bash
+$ vim config/jvm.options
+-Xms512m
+-Xmx512m
+```
+
+* tunning kernel parameter
+
+```bash
+$ sudo sysctl -w vm.max_map_count=262144 # default : 65530
+$ sudo sysctl -p
+$ sudo sysctl vm.max_map_count
+```
+
+* configuration
+
+```bash
+$ vim config/elasticsearch.yml
+
+cluster.name: es-twitter-cluster # 클러스터 이름
+node.name: node-1 # 노드 이름
+network.host: 0.0.0.0 # 모든곳에서 통신 가능하도록 네트워크를 열어둠
+```
+
+* 실행 확인
+
+```bash
+$ ./bin/elasticsearch &
+```
+
+* 작동 check
+
+```bash
+$ curl -XGET localhost:9200
+$ curl -XGET localhost:9200/_cluster/health?pretty
+```
 
