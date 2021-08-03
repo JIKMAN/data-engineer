@@ -433,4 +433,30 @@ $ bq ls -j
 $ bq show -j ${job id}
 ```
 
-### 
+
+
+> ### 데이터 조회
+
+#### Zeppelin
+
+* zeppelin install
+* configure bigquery credential
+
+```bash
+$ cp zeppelin/conf/zeppelin-env.sh.template zeppelin-env.sh
+$ vim zeppelin/conf/zeppelin-env.sh
+```
+
+```bash
+export GOOGLE_APPLICATION_CREDENTIALS="/path/to/bigquery-privatekey.json"
+```
+
+* start zeppelin
+
+```bash
+$ cd zeppelin
+$ ./bin/zeppelin-daemon.sh start
+```
+
+* connect to `https:{server-ip}:8080`
+* configure bigquery interpreter in Zeppelin
