@@ -81,7 +81,7 @@
    $ sudo service logstash start
    ```
 
-   ```sh
+   ```bash
    # twitter log 실시간 수집 확인
    $ tail -f /tmp/twitter*.json
    
@@ -161,6 +161,8 @@
 
   * `zookeeper.properties`
 
+    
+
   ```sh
   # snapshot 데이터를 저장할 경로를 지정
   dataDir=C:/dev/kafka_2.13-2.6.0/data/zookeeper
@@ -223,7 +225,7 @@ $ ./bin/kafka-console-producer.sh --broker-list localhost:9092 -topic twitter
 $ ./bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 -topic twitter
 ```
 
-![test](../img/topic_test.png)
+![topic_test.png](../img/topic_test.png)
 
 
 
