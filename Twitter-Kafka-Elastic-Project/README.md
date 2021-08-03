@@ -354,3 +354,83 @@ http://{kibana_server_ip}:5601
 
 ![image-20210803181428161](../img/kibana.png)
 
+
+
+> ### 데이터 저장, 처리
+
+#### Big Query
+
+* schema 정의
+
+![image-20210804001404466](../img/bigquery_schema.png)
+
+```bash
+$ bq mk twitterdataset
+```
+
+```bash
+$ bq mk twitterdataset.twitter-20210803 ./bigquery.json
+# twitterdataset에 twitter-20210803 table 생성, table에 bigquery.json 형식의 schema 적용
+```
+
+* GCS bucket 생성
+
+```bash
+$ gsutil mb -c nearline -l asia gs://twitter-test-bucket
+```
+
+* 데이터 처리를 위한 logstash install 및 config
+
+```bash
+$ sudo vim /etc/logstash/conf.d/logstash.conf
+```
+
+```bash
+input {
+  kafka {
+	bootstrap_servers => "${server ip}:9092"
+	codec => json_lines
+	consumer_threads => 1
+	group_id => "twitter_log_to_gcs"
+	topics => "twitter"
+  }
+}
+output {
+  google_cloud_storage {
+	bucket => "${gs bucket name}"
+	key_path => "/path/to/key"
+	service_account => "${api service account}"
+	codec => json_lines
+	gzip => true
+	max_file_size_kbytes => 100000
+	key_password => "${key password}"
+	output_format => json
+  }
+}
+```
+
+
+
+* load data to bigquery
+
+```bash
+$ bq --nosync load --autodetect --ignore_unknown_values --max_bad_records=1000 --source_format="NEWLINE_DELIMITED_JSON" twitterdataset.twitter-20210803 gs://twitter-test-bucket/*.gz "/home/ubuntu/bigquery.json"
+
+# --ignore_unkown_values : 정의하지 않은 필드는 무시
+# --max_bad_records : error를 몇개까지 허용할 것인지 (default : 1000)
+# source_format : 읽어오는 type
+```
+
+* check job status
+
+````bash
+$ bq ls -j
+````
+
+* debuging error
+
+```bash
+$ bq show -j ${job id}
+```
+
+### 
