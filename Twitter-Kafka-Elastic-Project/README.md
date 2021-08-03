@@ -238,8 +238,6 @@ output {
     codec => json_lines
   }
 }
-
-# servers에 s를 빼먹어서 몇시간을 고생했네요... 와아...
 ```
 
 
@@ -297,6 +295,7 @@ $ ./bin/elasticsearch &
 ```bash
 $ curl localhost:9200
 $ curl localhost:9200/_cluster/health?pretty
+$ curl -X GET "localhost:9200/_cat/nodes?v=true&pretty"
 ```
 
 * setting API in single-node
@@ -313,7 +312,11 @@ curl -XPUT 'localhost:9200/_settings?pretty' -H 'Content-Type: application/json'
 
 * #### kafka consumer 설정
 
-  * 새로운 VM logstash 설치 및 설정
+  * 새로운 VM logstash server configuration setting
+
+```bash
+$ sudo vim /etc/logstash/conf.d/logstash.conf
+```
 
 ```bash
 input {
@@ -334,3 +337,20 @@ output {
   }
 }
 ```
+
+```bash
+$ sudo service logstash start
+```
+
+
+
+> ### 데이터 조회
+
+```html
+http://{kibana_server_ip}:5601
+```
+
+* **index** : **twitter**-*
+
+![image-20210803181428161](../img/kibana.png)
+
