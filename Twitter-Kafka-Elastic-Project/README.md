@@ -225,7 +225,7 @@ $ ./bin/kafka-console-producer.sh --broker-list localhost:9092 -topic twitter
 $ ./bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 -topic twitter
 ```
 
-![topic_test.png](../img/topic_test.png)
+![topictest](https://github.com/JIKMAN/data-engineer/blob/master/img/topic_test.PNG)
 
 
 
