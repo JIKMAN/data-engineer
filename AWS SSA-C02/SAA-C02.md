@@ -97,3 +97,23 @@ ACL을 통해 필터링 이라는 기능을 수행할 수 있는데 특정 주�
 
 ---
 
+**5. A company recently migrated a message processing system to AWS. The system receives messages into an ActiveMQ queue running on an Amazon EC2 instance. Messages are processed by a consumer application running on Amazon EC2. The consumer application processes the messages and writes results to a MySQL database running on Amazon EC2. The company wants this application to be highly available with low operational complexity.**
+
+**Which architecture offers the HIGHEST availability?**
+
+* Use Amazon MQ with active/standby brokers configured across two Availability Zones. Add an Auto Scaling group for the consumer EC2 instances across two Availability Zones. Use Amazon RDS for MySQL with Multi-AZ enabled.
+
+---
+
+**6. A company is moving its on-premises Oracle database to Amazon Aurora PostgreSQL. The database has several applications that write to the same tables. The applications need to be migrated one by one with a month in between each migration Management has expressed concerns that the database has a high number of reads and writes. The data must be kept in sync across both databases throughout tie migration.**
+
+* Use AWS DataSync for the initial migration. Use `AWS Database Migration Service` (AWS DMS) to create a `full load plus change data capture` (CDC) replication task and a table mapping to select all tables.
+
+---
+
+**7. A company has developed a new video game as a web application. The application is in a three-tier architecture in a VPC with Amazon RDS for MySQL. In the database layer several players will compete concurrently online. The game’s developers want to display a top-10 scoreboard in near-real time and offer the ability to stop and restore the game while preserving the current scores**
+
+* Create a read replica on Amazon RDS for MySQL to run queries to compute the scoreboard and serve the read traffic to the web application.
+
+---
+
