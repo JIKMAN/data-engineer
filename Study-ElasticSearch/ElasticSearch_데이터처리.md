@@ -293,4 +293,3 @@ GET covid19-time/_search
   }
 }
 ```
-
