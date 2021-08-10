@@ -1,6 +1,6 @@
 ## GCP Professional Bigdata Engineer Certification
 
-
+![gcp](https://image-kr.bespinglobal.com/wp-content/uploads/2018/06/google-cloud-platform.jpg)
 
 1. Your company has recently grown rapidly and now ingesting data at a significantly higher rate than it was previously. You manage the daily batch MapReduce analytics jobs in Apache Hadoop. However, the recent increase in data has meant the batch jobs are falling behind. You were asked to recommend ways the development team could increase the responsiveness of the analytics without increasing costs. What should you recommend they do?
 
@@ -274,4 +274,75 @@
     keyword : highly scalability
     ```
 
-14. 
+14. You want to use a database of information about tissue samples to classify future tissue samples as either normal or mutated. You are evaluating an unsupervised anomaly detection method for classifying the tissue samples. Which two characteristic support this method? (Choose two.)
+
+    - **A. There are very few occurrences of mutations relative to normal samples.**
+    - B. There are roughly equal occurrences of both normal and mutated samples in the database.
+    - **C. You expect future mutations to have different features from the mutated samples in the database.**
+    - D. You expect future mutations to have similar features to the mutated samples in the database.
+    - E. You already have labels for which samples are mutated and which are normal in the database.
+
+    ```
+    B is incorrect as it's unsupervised learning and not a classification algorithm so a balanced sample is not a priority in this case
+    
+    E is incorrect as it's unsupervised learning we're talking to, not supervised learning
+    
+    C랑 D가 정답이 많이 갈리네요..
+    ```
+
+15. You need to store and analyze social media postings in Google **BigQuery** at a rate of 10,000 messages per minute in near **real-time**. Initially, design the application to use streaming inserts for individual postings. Your application also performs **data aggregations right after the streaming inserts.** You discover that the queries after streaming inserts do not exhibit strong consistency, and reports from the queries might **miss in-flight data**. How can you adjust your application design?
+
+    - A. Re-write the application to load accumulated data every 2 minutes.
+    - B. Convert the streaming insert code to batch load for individual messages.
+    - C. Load the original message to Google Cloud SQL, and export the table every hour to BigQuery via streaming inserts.
+    - **D. Estimate the average latency for data availability after streaming inserts, and always run queries after waiting twice as long.**
+
+    ```
+    The data is first comes to buffer and then written to Storage. If we are running queries in buffer we will face above mentioned issues. If we wait for the bigquery to write the data to storage then we won’t face the issue. So We need to wait till it’s written tio storage
+    ```
+
+16. Your startup has never implemented a formal security policy. Currently, everyone in the company has access to the datasets stored in Google BigQuery. Teams have freedom to use the service as they see fit, and they have not documented their use cases. You have been asked to secure the data warehouse. You need to discover what everyone is doing. What should you do first?
+
+    - **A. Use Google Stackdriver Audit Logs to review data access.**
+    - B. Get the identity and access management IIAM) policy of each table
+    - C. Use Stackdriver Monitoring to see the usage of BigQuery query slots.
+    - D. Use the Google Cloud Billing API to see what account the warehouse is being billed to.
+
+    ```
+    Stackdriver
+    자체적인 대용량 Message Queueing 인프라를 이용하여, GCP 서비스에 대한 통합 모니터링 및 로깅을 제공합니다.
+    
+    Cloud Audit log(감사 로그)
+    Cloud 감사 로그는 Google Cloud 프로젝트, 폴더, 조직에 세 가지 audit log(관리자 활동, 데이터 액세스, 시스템 이벤트)를 유지한다. Google Cloud 서비스에서 감사 로그 항목을 이 로그에 작성하여 Google Cloud 리소스에서 '누가, 언제, 어디서, 무엇을 했는지' 파악할 수 있다.
+    
+    query slots
+    SQL 쿼리를 실행하기 위해 BigQuery에 사용되는 가상 CPU입니다.
+    ```
+
+17. Your company is migrating their 30-node Apache Hadoop cluster to the cloud. They want to re-use **Hadoop jobs** they have already created and **minimize the management of the cluster** as much as possible. They also want to be able to **persist data** beyond the life of the cluster. What should you do?
+
+    - A. Create a Google Cloud Dataflow job to process the data.
+    - B. Create a Google Cloud Dataproc cluster that uses persistent disks for HDFS.
+    - C. Create a Hadoop cluster on Google Compute Engine that uses persistent disks.
+    - **D. Create a Cloud Dataproc cluster that uses the Google Cloud Storage connector.**
+    - E. Create a Hadoop cluster on Google Compute Engine that uses Local SSD disks.
+
+    출처 - https://cloud.google.com/dataproc?hl=ko
+
+    ```
+    Dataproc is used to migrate Hadoop and Spark jobs on GCP. Dataproc with GCS connected through Google Cloud Storage connector helps store data after the life of the cluster. When the job is high I/O intensive, then we need to create a small persistent disk.
+    
+    minimize the management of the cluster as much as possible. They also want to be able to persist data beyond the life of the cluster.
+    
+    In Dataproc, best practice is as soon as the job is done, the cluster is shutdown/deleted which will remove the data also in the cluster. They want storage beyond the life of the cluster which B option won't provide.
+    ```
+
+18. Business owners at your company have given you a database of bank transactions. Each row contains the user ID, transaction type, transaction location, and transaction amount. They ask you to investigate what type of machine learning can be applied to the data. Which three machine learning applications can you use? (Choose three.)
+
+    - A. Supervised learning to determine which transactions are most likely to be fraudulent.
+    - B. Unsupervised learning to determine which transactions are most likely to be fraudulent.
+    - C. Clustering to divide the transactions into N categories based on feature similarity.
+    - D. Supervised learning to predict the location of a transaction.
+    - E. Reinforcement learning to predict the location of a transaction.
+    - F. Unsupervised learning to predict the location of a transaction.
+
