@@ -244,9 +244,34 @@
 
 12. Your company handles data processing for a number of different clients. Each client prefers to use their own suite of analytics tools, with some allowing direct query access via Google BigQuery. You need to secure the data so that clients cannot see each other's data. You want to ensure appropriate access to the data.
     Which three steps should you take? (Choose three.)
+    
     - A. Load data into different partitions.
-    - B. Load data into a different dataset for each client.
+    - **B. Load data into a different dataset for each client.**
     - C. Put each client's BigQuery dataset into a different table.
-    - D. Restrict a client's dataset to approved users.
+    - **D. Restrict a client's dataset to approved users.**
     - E. Only allow a service account to access the datasets.
-    - F. Use the appropriate identity and access management (IAM) roles for each client's users.
+    - **F. Use the appropriate identity and access management (IAM) roles for each client's users.**
+    
+    ```
+    A 관계 없음
+    E : Person can't even access the Big Query Service via UI (if we give access only to Service account). 
+    ```
+    
+    
+
+13. You want to process payment transactions in a point-of-sale application that will run on Google Cloud Platform. Your user base could grow exponentially, but you do not want to manage infrastructure scaling.
+    Which Google database service should you use?
+
+    - A. Cloud SQL
+    - B. BigQuery
+    - C. Cloud Bigtable
+    - **D. Cloud Datastore**
+
+    참고 - https://cloud.google.com/datastore/docs/concepts/overview
+
+    ```
+    Datastore는 자동 확장, 고성능, 간편한 애플리케이션 개발을 위해 빌드된 NoSQL 문서 데이터베이스입니다. Datastore 기능은 다음과 같습니다.
+    keyword : highly scalability
+    ```
+
+14. 
