@@ -347,4 +347,157 @@
     - D. Supervised learning to predict the location of a transaction.
     - **E. Reinforcement learning to predict the location of a transaction.**
     - F. Unsupervised learning to predict the location of a transaction.
+    
+    
+    
+19. Your company's on-premises Apache Hadoop servers are approaching end-of-life, and IT has decided to migrate the cluster to Google Cloud Dataproc. A like-for- like migration of the cluster would require 50 TB of Google Persistent Disk per node. The CIO is concerned about the cost of using that much block storage. You want to minimize the storage cost of the migration. What should you do?
+
+    - **A. Put the data into Google Cloud Storage.**
+    - B. Use preemptible virtual machines (VMs) for the Cloud Dataproc cluster.
+    - C. Tune the Cloud Dataproc cluster so that there is just enough disk for all data.
+    - D. Migrate some of the cold data into Google Cloud Storage, and keep only the hot data in Persistent Disk.
+
+20. You work for a car manufacturer and have set up a data pipeline using Google Cloud Pub/Sub to capture anomalous sensor events. You are using a push subscription in Cloud Pub/Sub that calls a custom HTTPS endpoint that you have created to take action of these anomalous events as they occur. Your custom
+    HTTPS endpoint keeps getting an inordinate amount of duplicate messages. What is the most likely cause of these duplicate messages?
+
+    - A. The message body for the sensor event is too large.
+    - B. Your custom endpoint has an out-of-date SSL certificate.
+    - C. The Cloud Pub/Sub topic has too many messages published to it.
+    - **D. Your custom endpoint is not acknowledging messages within the acknowledgement deadline.**
+
+    출처 - https://cloud.google.com/pubsub/docs/faq#duplicates
+
+    ```
+     The custom endpoint is not acknowledging the message, that is the reason for Pub/Sub to send the message again and again.
+     If you send a negative acknowledgement or the acknowledgement deadline expires, Pub/Sub resends the message.
+    ```
+
+21. Your company uses a proprietary system to send inventory data every 6 hours to a data ingestion service in the cloud. Transmitted data includes a payload of several fields and the timestamp of the transmission. If there are any concerns about a transmission, the system re-transmits the data. How should you deduplicate the data most efficiency?
+
+    - **A. Assign global unique identifiers (GUID) to each data entry.**
+    - B. Compute the hash value of each data entry, and compare it with all historical data.
+    - C. Store each data entry as the primary key in a separate database and apply an index.
+    - D. Maintain a database table to store the hash value and other metadata for each data entry.
+
+    ```
+    A vs D
+    필드가 타임스탬프를 가진다는 조건이 있는데, 중복된 자료들이 다른 타임스탬프를 가지기 때문에 해쉬값이 다르게 형성될 수 있어서 해쉬로 중복을 제거하기는 힘들다는 의견이 많다.
+    ```
+
+22. Your company has hired a new data scientist who wants to perform complicated analyses across very large datasets stored in Google Cloud Storage and in a
+    Cassandra cluster on Google Compute Engine. The scientist primarily wants to create labelled data sets for machine learning projects, along with some visualization tasks. She reports that her laptop is not powerful enough to perform her tasks and it is slowing her down. You want to help her perform her tasks.
+    What should you do?
+
+    - A. Run a local version of Jupiter on the laptop.
+    - B. Grant the user access to Google Cloud Shell.
+    - C. Host a visualization tool on a VM on Google Compute Engine.
+    - **D. Deploy Google Cloud Datalab to a virtual machine (VM) on Google Compute Engine.**
+
+    ```
+    Cloud shell is provided for normal admin work and has limited capacity. Having a dedicated machine with the right tool (Datalab) should serve the purpose.
+    ```
+
+23. You are deploying 10,000 new Internet of Things devices to collect temperature data in your warehouses globally. You need to process, store and analyze these very large datasets in real time. What should you do?
+
+    - A. Send the data to Google Cloud Datastore and then export to BigQuery.
+    - **B. Send the data to Google Cloud Pub/Sub, stream Cloud Pub/Sub to Google Cloud Dataflow, and store the data in Google BigQuery.**
+    - C. Send the data to Cloud Storage and then spin up an Apache Hadoop cluster as needed in Google Cloud Dataproc whenever analysis is required.
+    - D. Export logs in batch to Google Cloud Storage and then spin up a Google Cloud SQL instance, import the data from Cloud Storage, and run an analysis as needed.
+
+    ```
+    Pubsub for realtime, Dataflow for pipeline, Bigquery for analytics
+    ```
+
+24. You have spent a few days loading data from comma-separated values (CSV) files into the Google BigQuery table CLICK_STREAM. The column DT stores the epoch time of click events. For convenience, you chose a simple schema where every field is treated as the STRING type. Now, you want to compute web session durations of users who visit your site, and you want to change its data type to the TIMESTAMP. You want to minimize the migration effort without making future queries computationally expensive. What should you do?
+
+    - A. Delete the table CLICK_STREAM, and then re-create it such that the column DT is of the TIMESTAMP type. Reload the data.
+    - B. Add a column TS of the TIMESTAMP type to the table CLICK_STREAM, and populate the numeric values from the column TS for each row. Reference the column TS instead of the column DT from now on.
+    - C. Create a view CLICK_STREAM_V, where strings from the column DT are cast into TIMESTAMP values. Reference the view CLICK_STREAM_V instead of the table CLICK_STREAM from now on.
+    - D. Add two columns to the table CLICK STREAM: TS of the TIMESTAMP type and IS_NEW of the BOOLEAN type. Reload all data in append mode. For each appended row, set the value of IS_NEW to true. For future queries, reference the column TS instead of the column DT, with the WHERE clause ensuring that the value of IS_NEW must be true.
+    - **E. Construct a query to return every row of the table CLICK_STREAM, while using the built-in function to cast strings from the column DT into TIMESTAMP values. Run the query into a destination table NEW_CLICK_STREAM, in which the column TS is the TIMESTAMP type. Reference the table NEW_CLICK_STREAM instead of the table CLICK_STREAM from now on. In the future, new data is loaded into the table NEW_CLICK_STREAM.**
+
+    ```
+    E 랑 D가 의견이 분분함
+    ```
+
+25. You want to use Google Stackdriver Logging to monitor Google BigQuery usage. You need an instant notification to be sent to your monitoring tool when new data is appended to a certain table using an insert job, but you do not want to receive notifications for other tables. What should you do?
+
+    - A. Make a call to the Stackdriver API to list all logs, and apply an advanced filter.
+    - B. In the Stackdriver logging admin interface, and enable a log sink export to BigQuery.
+    - C. In the Stackdriver logging admin interface, enable a log sink export to Google Cloud Pub/Sub, and subscribe to the topic from your monitoring tool.
+    - **D. Using the Stackdriver API, create a project sink with advanced log filter to export to Pub/Sub, and subscribe to the topic from your monitoring tool**.
+
+    참고 - https://cloud.google.com/blog/products/management-tools/automate-your-response-to-a-cloud-logging-event
+
+    ```
+    Using a Logging sink, you can build an event-driven system to detect and respond to log events in real time. Cloud Logging can help you to build this event-driven architecture through its integration with Cloud Pub/Sub and a serverless computing service such as Cloud Functions or Cloud Run.
+    
+    However as we need to create an alert only for certain table we will need to go with advanced log queries to filter only required log.
+    ```
+
+26. You are working on a sensitive project involving private user data. You have set up a project on Google Cloud Platform to house your work internally. An external consultant is going to assist with coding a complex transformation in a Google Cloud Dataflow pipeline for your project. How should you maintain users' privacy?
+
+    - A. Grant the consultant the Viewer role on the project.
+    - **B. Grant the consultant the Cloud Dataflow Developer role on the project.**
+    - C. Create a service account and allow the consultant to log on with it.
+    - D. Create an anonymized sample of the data for the consultant to work with in a different project.
+
+27. You are building a model to predict whether or not it will rain on a given day. You have thousands of input features and want to see if you can improve training speed by removing some features while having a minimum effect on model accuracy. What can you do?
+
+    - A. Eliminate features that are highly correlated to the output labels.
+    - **B. Combine highly co-dependent features into one representative feature.**
+    - C. Instead of feeding in each feature individually, average their values in batches of 3.
+    - D. Remove the features that have null values for more than 50% of the training records.
+
+    ```
+    combining features to createte a new feature is a step of "Feature construction"
+    or
+    decomposing or splitting features to create new features.
+    
+    Ideally, PCA should be apply if we want to reduce the dimension.
+    
+    Removing those columns / features - where Data is miss > 50% (may improve the speed) - but will decrease the accuracy as well. So instead of dropping features where we have missing data, we need to impute something
+    ```
+
+28. Your company is performing data preprocessing for a learning algorithm in Google Cloud Dataflow. Numerous data logs are being are being generated during this step, and the team wants to analyze them. Due to the dynamic nature of the campaign, the data is growing exponentially every hour.
+    The data scientists have written the following code to read the data for a new key features in the logs.
+
+    BigQueryIO.Read -
+    .named("ReadLogData")
+    .from("clouddataflow-readonly:samples.log_data")
+    You want to improve the performance of this data read. What should you do?
+
+    - A. Specify the TableReference object in the code.
+    - **B. Use .fromQuery operation to read specific fields from the table.**
+    - C. Use of both the Google BigQuery TableSchema and TableFieldSchema classes.
+    - D. Call a transform that returns TableRow objects, where each element in the PCollection represents a single row in the table.
+
+    ```
+    D vs B
+    ```
+
+29. Your company is streaming real-time sensor data from their factory floor into Bigtable and they have noticed extremely poor performance. How should the row key be redesigned to improve Bigtable performance on queries that populate real-time dashboards?
+
+    - A. Use a row key of the form <timestamp>.
+    - B. Use a row key of the form <sensorid>.
+    - C. Use a row key of the form <timestamp>#<sensorid>.
+    - **D. Use a row key of the form <sensorid>#<timestamp>.**
+
+    ```
+    why not C? Using the timestamp by itself as the row key is not recommended, as most writes would be pushed onto a single node. For the same reason, avoid placing a timestamp at the start of the row key. https://cloud.google.com/bigtable/docs/schema-design#row-keys
+    ```
+
+30. Your company's customer and order databases are often under heavy load. This makes performing analytics against them difficult without harming operations.
+    The databases are in a MySQL cluster, with nightly backups taken using mysqldump. You want to perform analytics with minimal impact on operations. What should you do?
+
+    - A. Add a node to the MySQL cluster and build an OLAP cube there.
+    - **B. Use an ETL tool to load the data from MySQL into Google BigQuery.**
+    - C. Connect an on-premises Apache Hadoop cluster to MySQL and perform ETL.
+    - D. Mount the backups to Google Cloud SQL, and then process the data using Google Cloud Dataproc.
+
+    ```
+    B vs D
+    ```
+
+    
 
