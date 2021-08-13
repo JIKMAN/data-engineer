@@ -499,5 +499,33 @@
     B vs D
     ```
 
-    
+31. You have Google Cloud Dataflow streaming pipeline running with a Google Cloud Pub/Sub subscription as the source. You need to make an update to the code that will make the new Cloud Dataflow pipeline incompatible with the current version. You do not want to lose any data when making this update. What should you do?
+
+    - **A. Update the current pipeline and use the drain flag.**
+    - B. Update the current pipeline and provide the transform mapping JSON object.
+    - C. Create a new pipeline that has the same Cloud Pub/Sub subscription and cancel the old pipeline.
+    - D. Create a new pipeline that has a new Cloud Pub/Sub subscription and cancel the old pipeline.
+
+    ```
+    'A' option is correct as the key requirement is not to lose
+    the data, the Dataflow pipeline can be stopped using the Drain option.
+    Drain options would cause Dataflow to stop any new processing, but would
+    also allow the existing processing to complete
+    Option C & D are incorrect as Cancel Option will lead to loose the data
+    Option B is very Close, since the new Code make pipeline incompatible by providing transform mapping JSON file you can handle this
+    ```
+
+32. Your company is running their first dynamic campaign, serving different offers by analyzing real-time data during the holiday season. The data scientists are collecting terabytes of data that rapidly grows every hour during their 30-day campaign. They are using Google Cloud Dataflow to preprocess the data and collect the feature (signals) data that is needed for the machine learning model in Google Cloud Bigtable. The team is observing suboptimal performance with reads and writes of their initial load of 10 TB of data. They want to improve this performance while minimizing cost. What should they do?
+
+    - **A. Redefine the schema by evenly distributing reads and writes across the row space of the table.**
+    - B. The performance issue should be resolved over time as the site of the BigDate cluster is increased.
+    - C. Redesign the schema to use a single row key to identify values that need to be updated frequently in the cluster.
+    - D. Redesign the schema to use row keys based on numeric IDs that increase sequentially per user viewing the offers.
+
+    ```
+    Cloud Bigtable performs best when reads and writes are evenly distributed throughout your table, which helps Cloud Bigtable distribute the workload across all of the nodes in your cluster. If reads and writes cannot be spread across all of your Cloud Bigtable nodes, performance will suffer.
+    If you find that you're reading and writing only a small number of rows, you might need to redesign your schema so that reads and writes are more evenly distributed.
+    ```
+
+33. 
 
