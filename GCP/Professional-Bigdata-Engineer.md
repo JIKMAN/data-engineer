@@ -65,6 +65,8 @@
    - **C. Dropout Methods**
    - D. Dimensionality Reduction
 
+   참고 - https://www.cs.toronto.edu/~rsalakhu/papers/srivastava14a.pdf
+
    ```
    Dropout is A Simple Way to Prevent Neural Networks from
    Overfitting
@@ -340,9 +342,9 @@
 18. Business owners at your company have given you a database of bank transactions. Each row contains the user ID, transaction type, transaction location, and transaction amount. They ask you to investigate what type of machine learning can be applied to the data. Which three machine learning applications can you use? (Choose three.)
 
     - A. Supervised learning to determine which transactions are most likely to be fraudulent.
-    - B. Unsupervised learning to determine which transactions are most likely to be fraudulent.
-    - C. Clustering to divide the transactions into N categories based on feature similarity.
+    - B. **Unsupervised learning to determine which transactions are most likely to be fraudulent.**
+    - **C. Clustering to divide the transactions into N categories based on feature similarity.**
     - D. Supervised learning to predict the location of a transaction.
-    - E. Reinforcement learning to predict the location of a transaction.
+    - **E. Reinforcement learning to predict the location of a transaction.**
     - F. Unsupervised learning to predict the location of a transaction.
 
