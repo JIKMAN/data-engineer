@@ -527,5 +527,17 @@
     If you find that you're reading and writing only a small number of rows, you might need to redesign your schema so that reads and writes are more evenly distributed.
     ```
 
-33. 
+33. Your software uses a simple JSON format for all messages. These messages are published to Google Cloud Pub/Sub, then processed with Google Cloud
+    Dataflow to create a real-time dashboard for the CFO. During testing, you notice that some messages are missing in the dashboard. You check the logs, and all messages are being published to Cloud Pub/Sub successfully. What should you do next?
+
+    - A. Check the dashboard application to see if it is not displaying correctly.
+    - **B. Run a fixed dataset through the Cloud Dataflow pipeline and analyze the output.**
+    - C. Use Google Stackdriver Monitoring on Cloud Pub/Sub to find the missing messages.
+    - D. Switch Cloud Dataflow to pull messages from Cloud Pub/Sub instead of Cloud Pub/Sub pushing messages to Cloud Dataflow.
+
+    ```
+    C is not cause Stack driver could tell us about performance but not missing info
+    ```
+
+    
 
