@@ -391,8 +391,6 @@ http://{kibana_server_ip}:5601
 
 * schema 정의
 
-카프카 -> 빅쿼리로 데이터를 적재하기 위해서 빅쿼리 테이블의 스키마를 직접 정의해 주어야 한다. 하지만 1000개가 넘는 트위터 필드를 직접 정의할 수는 없었기에, 열심히 깃허브, 구글링을 찾아가며 트위터 구조에 맞게 정의되어 있는 소스코드를 찾아보았지만, 계속 변화하는 트위터답게 구조가 많이 바뀌어서 적용되지 않았다. 따라서 빅쿼리에 데이터를 적재하고 제플린으로 조회하는 과정은 따로 진행하지 않고, 과정만 정리했다.
-
 ![image-20210804001404466](../img/bigquery_schema.png)
 
 ```bash
@@ -486,3 +484,4 @@ $ ./bin/zeppelin-daemon.sh start
 
 - connect to `https:{server-ip}:8080`
 - configure bigquery interpreter in Zeppelin
+
