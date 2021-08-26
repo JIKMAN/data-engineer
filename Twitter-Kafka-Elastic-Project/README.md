@@ -12,7 +12,7 @@
 
 1. Amazon EC2 instance 5대 구성 및  ssh key 발급
 
-![ec2](../img/ec2.png)
+![AWS](https://github.com/JIKMAN/data-engineer/blob/master/img/ec2.PNG)
 
 1. twitter open API access KEY 발급
 
@@ -158,7 +158,7 @@
   $ sudo netstat -anp | egrep "9092|2181"
   ```
 
-  ![port](../img/port.png)
+  ![port-image](https://github.com/JIKMAN/data-engineer/blob/master/img/port.PNG)
 
 * zookeeper : partition offset의 코드관리 및 kafka cluster의 health check를 담당
 
