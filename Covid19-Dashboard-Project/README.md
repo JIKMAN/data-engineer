@@ -58,7 +58,7 @@ volumes:
 
 자동으로 매핑을 지정해주지만, 현재 데이터 타입에 long까지 지정할 필요는 없어보여, 메모리를 절약하기 위해 **integer**로 변경해 주었다.
 
-![index-setting](../img/index-setting.png)
+![index-setting](https://github.com/JIKMAN/data-engineer/blob/master/img/index-setting.PNG)
 
 
 
@@ -68,7 +68,7 @@ volumes:
 
 날짜 필드는 timestamp로 지정한 후 인덱스 패턴을 생성해주면 데이터 조회가 가능하다.
 
-![search](../img/dovid-data.png)
+![search](https://github.com/JIKMAN/data-engineer/blob/master/img/dovid-data.PNG)
 
 
 
@@ -76,7 +76,7 @@ volumes:
 
 visualize library를 이용하여, 원하는 데이터를 조회해 시각화 자료를 생성해주었다.
 
-![image-20210827214806735](../img/visual.png)
+![image-20210827214806735](https://github.com/JIKMAN/data-engineer/blob/master/img/visual.PNG)
 
 
 
@@ -100,7 +100,7 @@ POST covid19-time/_update/QJiVh3sBAmil_3VJbMjF
 }
 ```
 
-![update](../img/update.png)
+![update](https://github.com/JIKMAN/data-engineer/blob/master/img/update.PNG)
 
 다시한번 조회 해보면
 
@@ -128,7 +128,7 @@ GET covid19-time/_search
 
 정상적으로 변경되었음을 확인할 수 있다.
 
-![update-complete](../img/update-complete.png)
+![update-complete](https://github.com/JIKMAN/data-engineer/blob/master/img/update-complete.PNG)
 
 
 
@@ -149,7 +149,7 @@ GET covid19-time/_search
 
 * #### Dashboard
 
-![dashboard](./covid19_dashboard.png)
+![dashboard](https://github.com/JIKMAN/data-engineer/blob/master/img/covid19_dashboard.PNG)
 
 
 
